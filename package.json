@@ -1,0 +1,41 @@
+{
+  "name": "working-timer",
+  "displayName": "Working Timer",
+  "description": "A simple countdown timer inside Visual Studio Code.",
+  "version": "1.1.0",
+  "publisher": "student-project",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "workingTimer.start", "title": "Working Timer: Start" },
+      { "command": "workingTimer.pause", "title": "Working Timer: Pause" },
+      { "command": "workingTimer.reset", "title": "Working Timer: Reset" },
+      { "command": "workingTimer.setDuration", "title": "Working Timer: Set Duration" }
+    ],
+    "configuration": {
+      "title": "Working Timer",
+      "properties": {
+        "workingTimer.durationMinutes": {
+          "type": "number",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 1440,
+          "description": "Timer duration in minutes."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "20.x",
+    "typescript": "^5.3.0"
+  }
+}
